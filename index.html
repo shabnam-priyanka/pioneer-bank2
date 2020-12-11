@@ -83,22 +83,51 @@
             const depositAmount = document.getElementById('depositAmount').value;
             const depositNumber = parseFloat(depositAmount);
 
-            const currentDeposit = document.getElementById('currentDeposit').innerText;
-            const currentDepositNumber = parseFloat(currentDeposit);
-            const totalDeposit = depositNumber + currentDepositNumber;
-            document.getElementById('currentDeposit').innerText =totalDeposit;
+            // const currentDeposit = document.getElementById('currentDeposit').innerText;
+            // const currentDepositNumber = parseFloat(currentDeposit);
+            // const totalDeposit = depositNumber + currentDepositNumber;
+            // document.getElementById('currentDeposit').innerText =totalDeposit;
 
-            const currentBalance = document.getElementById('currentBalance').innerText;
-            const currentBalanceNumber = parseFloat(currentBalance);
-            const totalBalance = depositNumber + currentBalanceNumber;
-            document.getElementById('currentBalance').innerText = totalBalance;
+            // const currentBalance = document.getElementById('currentBalance').innerText;
+            // const currentBalanceNumber = parseFloat(currentBalance);
+            // const totalBalance = depositNumber + currentBalanceNumber;
+            // document.getElementById('currentBalance').innerText = totalBalance;
 
-            
+            //above 8 lines made shorter in 2 line 98 & 99 created function called in here
+
+            spanTagDepositBalance('currentBalance', depositNumber)
+            spanTagDepositBalance('currentDeposit', depositNumber)
 
             document.getElementById('depositAmount').value = '';
             
         });
 
+        //withdraw
+        const withdrawBtn = document.getElementById('addWithdraw');
+        withdrawBtn.addEventListener('click', function (){
+            const withdrawAmount = document.getElementById('withdrawAmount').value;
+            const withdrawNumber = parseFloat(withdrawAmount);
+            let withdrawMoney = document.getElementById('currentWithdraw').innerText;
+            let totalWithdraw = parseFloat(withdrawMoney);
+            let moneyWithdraw = withdrawNumber + totalWithdraw;
+            //withdrawMoney.innerText = moneyWithdraw;
+            console.log(moneyWithdraw);
+
+            document.getElementById('currentWithdraw').innerText = moneyWithdraw;
+
+            document.getElementById('withdrawAmount').value = '';
+
+        })
+
+
+        //function for deposit and balance
+        function spanTagDepositBalance(id, depositNumber){
+            const currentBalance = document.getElementById(id).innerText;
+            const currentBalanceNumber = parseFloat(currentBalance);
+            const totalBalance = depositNumber + currentBalanceNumber;
+            document.getElementById(id).innerText = totalBalance;
+        }
+        
         
 
     </script>
